@@ -1,0 +1,131 @@
+<script type="text/javascript">
+// LET
+// 	for(let i = 0; i < 5; i++){
+// 		console.log("Counting:", i)
+// 	}
+// console.log(i)
+
+
+//CONST 
+// const name = "ron";
+// function changeName(){
+// 	name = "Meta World Peace"
+// }
+
+// //TEMPLATE LITERALS
+// var student = "JT";
+// var position = "DIR"
+// var cohort = "July 2016"
+// console.log("Hello, " + student)
+// console.log(`Hello, ${student}, I heard you were in the ${cohort} cohort and now you are a ${position}`)
+
+jQuery!!
+- JavaScript library
+- simplifies client-side scripting
+- designed to...
+	- navigate the document, 
+	- select DOM elements,
+	- create animations,
+	- handle events,
+	- develop Ajax applications
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+//Given a year as a number (ex: 2016), print the number of Friday-the-thirteens in that year. Read about how to construct dates closely to get ideas on how to implement this:
+// var today = new Date(year, month);
+// console.log(today)
+// var dayOfTheWeek = today.getDay();
+// console.log(dayOfTheWeek)
+// var dayOfMonth = today.getDate();
+// console.log(dayOfMonth)
+
+// var sum = 0;
+// var year = 2018
+// for(var i = 0; i < 12; i++){
+// 	var targetDate = new Date(year, i, 13)
+// 	if(targetDate.getDay() == 5){
+// 		sum++;
+// 	}
+// }	
+
+//console.log(sum)
+
+// var A = '4'
+// var B = '8'
+// var C = '('
+// var D = '|)'
+// var E = '3'
+// var F = '|='
+// var G = '6'
+// var H = '|-|'
+// var I = ']['
+// var J = '_|'
+// var K = '|<'
+// var L = '|_'
+// var M = '|\/|'
+// var N = '|\|'
+// var O = '()'
+// var P = '|2'
+// var Q = '(,)'
+// var R = '|Z'
+// var S = '$'
+// var T = "']['"
+// var U = '|_|'
+// var V = '\/'
+// var W = '\/\/'
+// var X = '><'
+// var Y = '`/'
+// var Z = '2'
+var myLeetArray =[
+'4',
+'8',
+'(',
+')',
+'3',
+'|=',
+'6',
+'|-|',
+'][',
+'_|',
+'|<',
+'|_',
+'|\/|',
+'|\|',
+'()',
+'|2',
+'(,)',
+'|Z',
+'$',
+"']['",
+'|_|',
+'\/',
+'\/\/',
+'><',
+'`/',
+'2'
+]
+
+
+
+var myArray = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+var finalLeetArray;
+var myString = "This is more sample text".toUpperCase();
+var myStringArray = myString.split("");
+console.log(myStringArray);
+for(i = 0; i < myString.length; i++){
+	for(var j = 0; j < myArray.length; j++){
+		if(myStringArray[i] == myArray[j]){
+			myStringArray[i] = myLeetArray[j];
+			// console.log(finalLeetArray)
+		}
+	}
+}
+
+console.log(myStringArray)
+
+
+
+
+
+
+</script>
