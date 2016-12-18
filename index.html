@@ -10,11 +10,11 @@
 	<div class="row">
 	<canvas id= "game"></canvas>
 <div id= "timer">30 seconds</div>
-<div id="score">Score: <span id="score-value">0</span></div>
+<div id="score">Player Score: <span id="score-value">0</span></div>
 <div id="hi-score">High Score: <span id="hi-score-value">0</span></div>
-<button id= "startButton" onclick= "startGame()">Start Game</button>
-<button onclick= "newPlayer()">Enter Player Name to Start</button>
-<input id= "player-name" type="text" placeholder="Player Name">
+<button type="button" class= "btn btn-success" id= "startButton" onclick= "startGame()">Start Game</button>
+<button type="button" class= "btn btn-info" onclick= "newPlayer()">Enter Player Name to Start</button>
+<input id= "player-name" type="text" placeholder="Enter Player Name Here">
 <script type="text/javascript">
 
 function Player(name){
