@@ -6,15 +6,15 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-<div class="container">
-	<div class="row">
-	<canvas id= "game"></canvas>
-<div id= "timer">30 seconds</div>
-<div id="score">Player Score: <span id="score-value">0</span></div>
-<div id="hi-score">High Score: <span id="hi-score-value">0</span></div>
-<button type="button" class= "btn btn-success" id= "startButton" onclick= "startGame()">Start Game</button>
-<button type="button" class= "btn btn-info" onclick= "newPlayer()">Enter Player Name to Start</button>
-<input id= "player-name" type="text" placeholder="Enter Player Name Here">
+	<div class="container">
+		<div class="row">
+			<canvas id= "game"></canvas>
+				<div id= "timer">30 seconds</div>
+				<div id="score">Player Score: <span id="score-value">0</span></div>
+				<div id="hi-score">High Score: <span id="hi-score-value">0</span></div>
+				<button type="button" class= "btn btn-success" id= "startButton" onclick= "startGame()">Start Game</button>
+				<button type="button" class= "btn btn-info" onclick= "newPlayer()">Enter Player Name to Start</button>
+				<input id= "player-name" type="text" placeholder="Enter Player Name Here">
 <script type="text/javascript">
 
 function Player(name){
@@ -91,8 +91,6 @@ var heroLocation= {
 	// Monster 1
 var monster = new Image();
 	monster.src = "canvas-game-assets/monster.png"
-var monster2 = new Image();
-	monster2.src = "canvas-game-assets/monster.png"
 var monsterLocationX = Math.ceil(Math.random() * 442);
 var monsterLocationY = Math.ceil(Math.random() * 409);
 var monsterLocationNewX = Math.ceil(Math.random() * 442);
@@ -102,6 +100,8 @@ var monsterLocation = {
 		y: monsterLocationY
 	};
 	//Monster 2
+var monster2 = new Image();
+	monster2.src = "canvas-game-assets/monster.png"
 var monsterLocationX2 = Math.ceil(Math.random() * 442);
 var monsterLocationY2 = Math.ceil(Math.random() * 409);
 var monsterLocationNewX2 = Math.ceil(Math.random() * 442);
@@ -109,6 +109,17 @@ var monsterLocationNewY2 = Math.ceil(Math.random() * 409);
 var monsterLocation2 = {
 		x: monsterLocationX2,
 		y: monsterLocationY2
+	};
+	//Monster 3
+var monster3 = new Image();
+	monster3.src = "canvas-game-assets/monster.png"
+var monsterLocationX3 = Math.ceil(Math.random() * 442);
+var monsterLocationY3 = Math.ceil(Math.random() * 409);
+var monsterLocationNewX3 = Math.ceil(Math.random() * 442);
+var monsterLocationNewY3 = Math.ceil(Math.random() * 409);
+var monsterLocation3 = {
+		x: monsterLocationX3,
+		y: monsterLocationY3
 	};
 	// an array to hold all the keys that are currently pressed down
 var keysDown = [];
@@ -182,15 +193,37 @@ var keysDown = [];
 	            monsterLocation2.x = monsterLocationNewX2;
 	            monsterLocation2.y = monsterLocationNewY2;
 			};
+
+		if( //MONSTER 3 COLLISION
+			(heroLocation.x <= monsterLocation3.x + 32)
+			&& (heroLocation.y <= monsterLocation3.y + 32)
+			&& (monsterLocation3.x <= heroLocation.x + 32)
+			&& (monsterLocation3.y <= heroLocation.y + 32)
+			){
+			currentPlayersScore++;
+			document.getElementById('score-value').innerHTML=currentPlayersScore
+			//we have updated the players score. check it against highscore. if its higher, we have a neww high score
+			if(currentPlayersScore > highscore){
+				highscore = currentPlayersScore;
+				document.getElementById('hi-score-value').innerHTML = highscore;
+			};
+			var currentPlayerIndex = playerArray.length-1;
+			console.log(playerArray[currentPlayerIndex]);
+			if(currentPlayersScore > playerArray[currentPlayerIndex].highscore){
+				playerArray[currentPlayerIndex].highscore = currentPlayersScore;
+			};
+            monsterLocation3.x = monsterLocationNewX3;
+            monsterLocation3.y = monsterLocationNewY3;
+			};
 		}
 	function updateMonster1(){
 		if ((monsterLocation.x == monsterLocationNewX) && (monsterLocation.y == monsterLocationNewY)){
 			monsterLocationNewX = Math.ceil(Math.random() * 442);
 			monsterLocationNewY = Math.ceil(Math.random() * 409);
-			console.log(monsterLocationNewY);
-			console.log(monsterLocationNewX);
-			console.log(monsterLocation.x)
-			console.log(monsterLocation.y)
+			// console.log(monsterLocationNewY);
+			// console.log(monsterLocationNewX);
+			// console.log(monsterLocation.x)
+			// console.log(monsterLocation.y)
 		}else{
 			if (monsterLocation.x < monsterLocationNewX){
 			monsterLocation.x += Math.ceil(Math.random() * 3);
@@ -232,12 +265,38 @@ function updateMonster2(){
 	};
 
 
+function updateMonster3(){
+		if ((monsterLocation3.x == monsterLocationNewX3) && (monsterLocation3.y == monsterLocationNewY3)){
+			monsterLocationNewX3 = Math.ceil(Math.random() * 442);
+			monsterLocationNewY3 = Math.ceil(Math.random() * 409);
+			console.log(monsterLocationNewY3);
+			console.log(monsterLocationNewX3);
+			console.log(monsterLocation3.x)
+			console.log(monsterLocation3.y)
+		}else{
+			if (monsterLocation3.x < monsterLocationNewX3){
+			monsterLocation3.x += Math.ceil(Math.random() * 3);
+			};
+			if (monsterLocation3.x > monsterLocationNewX3){
+			monsterLocation3.x -= Math.ceil(Math.random() * 3);
+			};
+			if (monsterLocation3.y < monsterLocationNewY3){
+			monsterLocation3.y += Math.ceil(Math.random() * 3);
+			};
+			if (monsterLocation3.y > monsterLocationNewY3){
+			monsterLocation3.y -= Math.ceil(Math.random() * 3);
+			};
+		};
+	};
+
+
 // KEEP THIS AT THE BOTTOM
 	function draw(){
 		if(gameOn){
 			update();
 			updateMonster1();
 			updateMonster2();
+			updateMonster3();
 			};
 		context.drawImage(backgroudImage,0,0);
 		if(charactersAppear){
